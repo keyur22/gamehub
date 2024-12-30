@@ -10,10 +10,8 @@ import {
 import { MdPhoneIphone } from 'react-icons/md';
 import { SiNintendo } from 'react-icons/si';
 import { BsGlobe } from 'react-icons/bs';
-import { HStack, Icon } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import { ReactIcon } from './Icon';
-import { IconType } from 'react-icons';
 
 interface Props {
   platforms: Platform[];
@@ -33,7 +31,7 @@ const iconMap: { [key: string]: ReactNode } = {
 
 const PlatformIcons = ({ platforms }: Props) => {
   return (
-    <HStack gap={3} pt={5} flexWrap='wrap'>
+    <HStack gap={3} flexWrap='wrap'>
       {platforms.map((x) => (
         <span key={x.id}>{iconMap[x.slug]}</span>
       ))}

@@ -21,14 +21,10 @@ interface Props {
 
 const iconMap: { [key: string]: ReactNode } = {
   pc: <FaWindows />,
-  playstation3: <FaPlaystation />,
-  playstation4: <FaPlaystation />,
-  playstation5: <FaPlaystation />,
-  'xbox-series-x': <FaXbox />,
-  xbox360: <FaXbox />,
-  'xbox-one': <FaXbox />,
-  macos: <FaApple />,
-  'nintendo-switch': <SiNintendo />,
+  playstation: <FaPlaystation />,
+  xbox: <FaXbox />,
+  mac: <FaApple />,
+  nintendo: <SiNintendo />,
   linux: <FaLinux />,
   android: <FaAndroid />,
   ios: <MdPhoneIphone />,
@@ -37,9 +33,9 @@ const iconMap: { [key: string]: ReactNode } = {
 
 const PlatformIcons = ({ platforms }: Props) => {
   return (
-    <HStack py={3}>
+    <HStack gap={3} pt={5} flexWrap='wrap'>
       {platforms.map((x) => (
-        <span>{iconMap[x.slug]}</span>
+        <span key={x.id}>{iconMap[x.slug]}</span>
       ))}
     </HStack>
   );

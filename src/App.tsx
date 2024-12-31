@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Genre } from './hooks/useGenres';
 import PlatformMenu from './components/PlatformMenu';
 import { Platform } from './hooks/usePlatforms';
+import GameHeading from './components/GameHeading';
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -40,6 +41,10 @@ function App() {
       </Stack>
       <GridItem area='main'>
         <VStack gap={5} alignItems='flex-start'>
+          <GameHeading
+            selectedPlatform={selectedPlatform}
+            selectedGenre={selectedGenre}
+          />
           <PlatformMenu
             selectedPlatform={selectedPlatform}
             onSelectPlatform={(platform) => setSelectedPlatform(platform)}

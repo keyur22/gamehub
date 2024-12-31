@@ -19,6 +19,18 @@ const GameGrid = ({ selectedGenre, selectedPlatform, searchText }: Props) => {
   } = useGames(selectedGenre, selectedPlatform, searchText);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
+  if (error && !loading) {
+    return null;
+  }
+
+  if (!loading && !error && !games?.length) {
+    return (
+      <Text textStyle='xl' mx='auto' mt={5} color='red' fontWeight='semibold'>
+        No Results found
+      </Text>
+    );
+  }
+
   return (
     <Box w='100%'>
       <Text>{error}</Text>

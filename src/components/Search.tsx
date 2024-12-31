@@ -18,6 +18,7 @@ const Search = ({ setSearchText }: Props) => {
   const onClear = () => {
     ref.current.value = '';
     ref.current.focus();
+    setSearchText('');
   };
 
   return (

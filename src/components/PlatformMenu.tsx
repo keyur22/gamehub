@@ -4,11 +4,11 @@ import { BsChevronDown } from 'react-icons/bs';
 import usePlatforms, { Platform } from '@/hooks/usePlatforms';
 
 interface Props {
-  selectedPlatform: Platform;
+  selectedPlatform: Platform | null;
   onSelectPlatform: (platform: Platform) => void;
 }
 
-const PlatformMenu = () => {
+const PlatformMenu = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { data, error } = usePlatforms();
 
   if (error) return null;
@@ -16,22 +16,23 @@ const PlatformMenu = () => {
   return (
     <MenuRoot>
       <MenuTrigger asChild>
-        <Button variant='solid' size='sm'>
-          Platforms <BsChevronDown />
+        <Button variant='surface' size='sm'>
+          {selectedPlatform?.name || 'Platforms'} <BsChevronDown />
         </Button>
       </MenuTrigger>
       <MenuContent>
-        {data?.map((x) => (
+        {data?.map((platform) => (
           <MenuItem
-            key={x.id}
-            value={x.name}
+            key={platform.id}
+            value={platform.name}
             justifyContent='space-between'
             my={2}
             cursor='pointer'
+            onClick={() => onSelectPlatform(platform)}
           >
-            <Text>{x.name}</Text>
+            <Text>{platform.name}</Text>
             <Badge py='1' borderRadius='md' variant='solid'>
-              {x.games_count}
+              {platform.games_count}
             </Badge>
           </MenuItem>
         ))}

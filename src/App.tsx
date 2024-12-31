@@ -39,8 +39,14 @@ function App() {
       </Stack>
       <GridItem area='main'>
         <VStack gap={5} alignItems='flex-start'>
-          <PlatformMenu />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformMenu
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+          />
+          <GameGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedPlatform}
+          />
         </VStack>
       </GridItem>
     </Grid>

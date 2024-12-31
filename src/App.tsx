@@ -12,6 +12,7 @@ function App() {
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
     null
   );
+  const [searchText, setSearchText] = useState('');
 
   return (
     <Grid
@@ -27,7 +28,7 @@ function App() {
       }}
     >
       <GridItem area='nav'>
-        <NavBar />
+        <NavBar setSearchText={setSearchText} />
       </GridItem>
       <Stack hideBelow='lg'>
         <GridItem area='aside'>
@@ -46,6 +47,7 @@ function App() {
           <GameGrid
             selectedGenre={selectedGenre}
             selectedPlatform={selectedPlatform}
+            searchText={searchText}
           />
         </VStack>
       </GridItem>
